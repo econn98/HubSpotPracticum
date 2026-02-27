@@ -1,0 +1,46 @@
+doctype html
+html
+  head
+    title= title
+    style.
+      body {
+        background: linear-gradient(to right, #1e3c72, #2a5298);
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: center;
+        padding-top: 50px;
+      }
+      form {
+        background: rgba(255,255,255,0.1);
+        padding: 20px;
+        border-radius: 8px;
+        display: inline-block;
+      }
+      input, textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 10px 0;
+        border-radius: 4px;
+        border: none;
+      }
+      button {
+        background-color: #0d6efd;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #084298;
+      }
+  body
+    h1 Create Custom Object
+    form(method="POST", action="/form")
+      input(type="text", name="name", placeholder="Enter Name", required)
+      textarea(name="description", placeholder="Enter Description", required)
+      br
+      button(type="submit") Submit
+      br
+      br
+      a(href="/") Back to Home
