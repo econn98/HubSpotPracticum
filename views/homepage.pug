@@ -1,0 +1,91 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href="/css/style.css")
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f8fa;
+      }
+      h1 {
+        color: #33475b;
+      }
+      .nav-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 12px 24px;
+        background-color: #ff7a59;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+      .nav-link:hover {
+        background-color: #ff5c35;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        margin-top: 20px;
+      }
+      th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #33475b;
+        color: white;
+      }
+      tr:hover {
+        background-color: #f5f8fa;
+      }
+      .error {
+        color: #d94c53;
+        padding: 10px;
+        background-color: #fce4e4;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+      .empty-message {
+        padding: 20px;
+        text-align: center;
+        color: #666;
+        background: white;
+        border-radius: 4px;
+      }
+  body
+    h1 Evan's HubSpot Contacts
+
+    a.nav-link(href="/update-cobj") Add to this table
+
+    if error
+      p.error= error
+
+    if contacts && contacts.length > 0
+      table
+        thead
+          tr
+            th First Name
+            th Last Name
+            th Email
+            th Favorite Game
+            th Genre
+            th Platform
+        tbody
+          each contact in contacts
+            tr
+              td= contact.properties.firstname || '-'
+              td= contact.properties.lastname || '-'
+              td= contact.properties.email || '-'
+              td= contact.properties.favorite_game || '-'
+              td= contact.properties.genre || '-'
+              td= contact.properties.platform || '-'
+    else
+      p.empty-message No contacts found. Click "Add to this table" to create one.

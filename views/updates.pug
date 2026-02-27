@@ -1,0 +1,121 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href="/css/style.css")
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f8fa;
+      }
+      h1 {
+        color: #33475b;
+      }
+      .nav-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        background-color: #516f90;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+      }
+      .nav-link:hover {
+        background-color: #425b76;
+      }
+      form {
+        background-color: white;
+        padding: 30px;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #33475b;
+        font-weight: bold;
+      }
+      input[type="text"],
+      input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #cbd6e2;
+        border-radius: 4px;
+        font-size: 14px;
+        box-sizing: border-box;
+      }
+      input[type="text"]:focus,
+      input[type="email"]:focus {
+        outline: none;
+        border-color: #ff7a59;
+      }
+      .required {
+        color: #d94c53;
+      }
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #ff7a59;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      button:hover {
+        background-color: #ff5c35;
+      }
+      .error {
+        color: #d94c53;
+        padding: 10px;
+        background-color: #fce4e4;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+  body
+    h1 Add New Contact
+
+    a.nav-link(href="/") Return to the homepage
+
+    if error
+      p.error= error
+
+    form(action="/update-cobj" method="POST")
+      .form-group
+        label(for="firstname")
+          | First Name
+          span.required  *
+        input(type="text" id="firstname" name="firstname" required placeholder="Enter first name")
+
+      .form-group
+        label(for="lastname") Last Name
+        input(type="text" id="lastname" name="lastname" placeholder="Enter last name")
+
+      .form-group
+        label(for="email")
+          | Email
+          span.required  *
+        input(type="email" id="email" name="email" required placeholder="Enter email")
+
+      .form-group
+        label(for="favorite_game")
+          | Favorite Game
+          span.required  *
+        input(type="text" id="favorite_game" name="favorite_game" required placeholder="e.g. Elden Ring")
+
+      .form-group
+        label(for="genre") Genre
+        input(type="text" id="genre" name="genre" placeholder="e.g. Action RPG")
+
+      .form-group
+        label(for="platform") Platform
+        input(type="text" id="platform" name="platform" placeholder="e.g. PC, PlayStation, Xbox")
+
+      button(type="submit") Create Contact
